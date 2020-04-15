@@ -15,12 +15,14 @@
     <div class="heading-div">
       <h1 class="heading">Quiz</h1>
     </div>
-    <p class="about">You will have 10 questions. Good answer: +5 points, wrong answer: -3 points.
-      You can skip to the next question but you will lose one chance.</p>
+    <p class="about">You will have 10 questions. Good answer: +5 points, wrong answer or timeout: -3 points.
+      <br>You can skip to the next question by clicking on 'Pull a question' but you will lose one chance.
+      <br>You will have 10 seconds for each question. Hurry up!</p>
     <h2 class="score">Your score: 0</h2>
     <h2 class="questions-left">Questions: 10</h2>
+    <h2 class="timer">Time:</h2>
     <button class="question-btn btn btn-info" aria-pressed="false">Pull a question</button>
-    <h1 class="question-text"></h1>
+    <h2 class="question-text"></h2>
     <div class="answer-buttons">
       <button class="answer1 btn btn-success"></button>
       <button class="answer2 btn btn-success"></button>
@@ -32,7 +34,9 @@
     <div class="results"></div>
     <button class="try-again btn btn-primary">Try again</button>
   </div>
-
+  <audio id='song' loop>
+        <source src="audio/music.ogg">
+  </audio>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

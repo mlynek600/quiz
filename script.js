@@ -11,6 +11,7 @@ const questionsLeft = document.querySelector('.questions-left');
 const tryAgainBtn = document.querySelector('.try-again');
 const finishBtn = document.querySelector('.finish');
 const results = document.querySelector('.results');
+const timer = document.querySelector('.timer');
 let correctAnswerBtn;
 let currentQuestion;
 let questions;
@@ -18,6 +19,8 @@ let points = 0;
 let isCorrect;
 let questionsToEnd = 10;
 let endMsg;
+let time;
+let timerID;
 
 restart();
 
@@ -30,6 +33,7 @@ function restart() {
       // console.log(questions);
     });
 
+  timer.style = 'visibility: hidden';
   tryAgainBtn.style = 'visibility: hidden';
   questionsToEnd = 10;
   questionsLeft.innerText = `Questions left: ${questionsToEnd}`;
@@ -46,7 +50,31 @@ function restart() {
   results.innerText = '';
 }
 
+function timing() {
+  timer.innerText = `Time: ${time}`;
+  time -= 1;
+  if (time == -1) {
+    timer.innerText = 'Out of time!';
+    stopTiming();
+    points -= 3;
+    score.innerText = `Your score: ${points}`;
+    answerBtn1.disabled = true;
+    answerBtn2.disabled = true;
+    answerBtn3.disabled = true;
+    answerBtn4.disabled = true;
+  }
+}
+
+function stopTiming() {
+  clearInterval(timerID);
+}
+
 function pullQuestion() {
+  stopTiming();
+  time = 10;
+  timer.innerText = `Time: ${time}`;
+  timer.style = 'visibility: visible';
+  timerID = setInterval(timing, 1000);
   showQuestion();
   questionsToEnd -= 1;
   questionsLeft.innerText = `Questions: ${questionsToEnd}`;
@@ -161,6 +189,7 @@ function checkAnswer(event) {
       }
       break;
   }
+  stopTiming();
   score.innerText = `Your score: ${points}`;
   isCorrectMsg.innerText = (isCorrect) ? 'Correct!' : "Wrong!";
   answerBtn1.disabled = true;
@@ -175,18 +204,19 @@ function finish() {
 }
 
 function showResult() {
+  stopTiming();
   if (points >= 30) {
-    endMsg = 'Impressive result!';
+    endMsg = 'Impressive result! 😁';
   } else if (points >= 20) {
-    endMsg = 'Very good!';
+    endMsg = 'Very good! 😀';
   } else if (points >= 10) {
-    endMsg = 'Nice!';
+    endMsg = 'Nice! 😉';
   } else if (points >= 0) {
-    endMsg = 'You can be better.';
+    endMsg = 'You can be better! 😏';
   } else {
-    endMsg = 'Maybe next time?';
+    endMsg = 'Maybe next time? 😅';
   }
-  results.innerHTML = `<h2>${endMsg}</h2>`
+  results.innerHTML = `<h4>${endMsg}</h4>`
   tryAgainBtn.style = 'visibility: visible';
   finishBtn.style = 'display: none';
   answerBtn1.disabled = true;
@@ -202,6 +232,11 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function musicPlay() {
+    document.getElementById('song').play();
+    document.removeEventListener('click', musicPlay);
+}
+
 questionBtn.addEventListener('click', pullQuestion);
 answerBtn1.addEventListener('click', checkAnswer);
 answerBtn2.addEventListener('click', checkAnswer);
@@ -209,3 +244,4 @@ answerBtn3.addEventListener('click', checkAnswer);
 answerBtn4.addEventListener('click', checkAnswer);
 tryAgainBtn.addEventListener('click', restart);
 finishBtn.addEventListener('click', showResult);
+document.addEventListener('click', musicPlay);

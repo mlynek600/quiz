@@ -4,6 +4,8 @@
 
 .answer1, .answer2, .answer3, .answer4 {
   visibility: hidden;
+  width: 250px;
+  margin: 5px;
 }
 
 .try-again {
@@ -20,7 +22,7 @@
 }
 
 .heading-div {
-  margin-top: 10vh;
+  margin-top: 2vh;
 }
 
 .btn:focus, .btn:active {
@@ -28,6 +30,16 @@
   box-shadow: none;
 }
 
-.results {
-  color: pink;
+.question-text {
+  color: darkblue;
+}
+
+.answer-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer {
+  color: darkgrey;
+  visibility: hidden;
 }
