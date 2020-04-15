@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.answer1, .answer2, .answer3, .answer4 {
+  visibility: hidden;
+}
+
+.try-again {
+  visibility: hidden;
+}
+
+.finish {
+  display: none;
+  margin-top: 1vh;
+}
+
+.question-btn {
+  visibility: hidden;
+}
+
+.heading-div {
+  margin-top: 10vh;
+}
+
+.btn:focus, .btn:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.results {
+  color: pink;
+}
