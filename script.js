@@ -30,7 +30,6 @@ function restart() {
     .then(json => {
       questions = json.results;
       questionBtn.style = 'visibility: visible';
-      // console.log(questions);
     });
 
   timer.style = 'visibility: hidden';
@@ -233,8 +232,8 @@ function getRandomIntInclusive(min, max) {
 }
 
 function musicPlay() {
-    document.getElementById('song').play();
-    document.removeEventListener('click', musicPlay);
+  document.getElementById('song').play();
+  document.removeEventListener('click', musicPlay);
 }
 
 questionBtn.addEventListener('click', pullQuestion);
