@@ -73,6 +73,11 @@ function timing() {
     shaker.style = 'animation: shake 3s infinite';
     stopTiming();
     points -= 3;
+    if (points > 0) {
+      score.style = "color: green";
+    } else if (points < 0) {
+      score.style = "color: red";
+    }
     score.innerText = `Your score: ${points}`;
     disableAnswerButtons();
   }
